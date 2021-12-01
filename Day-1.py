@@ -1,22 +1,35 @@
 
-depth = [199,
-200,
-208,
-210,
-200,
-207,
-240,
-269,
-260,
-263]
+day1data = open("Day1-1_Input.txt", "r")
+depth = []
+for line in day1data:
+    value = int(line)
+    depth.append(value)
 
-decreases = 0
+day1data.close()
 
-for i in range(len(depth)):
-    if i == 0:
-        decreases = 0
-    else:
-        if depth[i] > depth[i-1]:
-            decreases += 1
+def calcdecrease(depthlist):
+    decreases = 0
+    for i in range(len(depthlist)):
+        if i == 0:
+            decreases = 0
+        else:
+            if depthlist[i] > depthlist[i-1]:
+                decreases += 1
+    return(decreases)
 
-print(decreases)
+def slidingcalcdecrease(depthlist2):
+    slidingdecreases = 0
+    for i in range(len(depthlist2) - 2):
+        if i == 0:
+            slidingdecreases = 0
+        else:
+            if (int(depthlist2[i]) + int(depthlist2[i+1]) + int(depthlist2[i+2])) > (int(depthlist2[i-1]) + int(depthlist2[i]) + int(depthlist2[i+1])):
+                slidingdecreases += 1
+    return(slidingdecreases)
+
+
+return1 = calcdecrease(depth)
+return2 = slidingcalcdecrease(depth)
+
+print("The answer for Part 1 is: ", return1)
+print("The answer for Part 2 is: ", return2)
