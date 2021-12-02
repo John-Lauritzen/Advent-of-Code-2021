@@ -4,7 +4,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>876aa309-6dd2-4f95-986b-b5e4cd10ecaa</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Advent_of_Code_2021.py</StartupFile>
+    <StartupFile>
+    </StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,8 +22,10 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Advent_of_Code_2021.py" />
     <Compile Include="Day-1.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Day-2.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
