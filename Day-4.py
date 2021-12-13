@@ -94,22 +94,31 @@ def scoreBingo (calls, currentcall, cardlist, card):
 def runBingo (calllist, cardlist):
     callnumber = 0
     currentcall = 0
+    cards = len(cardlist)
     calls =[]
     bingo = False
     while bingo is False:
         currentcall = calllist[callnumber]
         calls.append(currentcall)
-        print(currentcall)
         callnumber += 1
         card = 0
-        while bingo is False and card in range(len(cardlist)):
+        while bingo is False and card in range(cards):
             bingo = checkforBingo(calls, cardlist, card)
             if bingo is True:
                 score = scoreBingo(calls, currentcall, cardlist, card)
-                print(calls)
-                print(cardlist[card])
                 print('The winner is card', card, 'with a score of', score)
+                return card
             card += 1
+
+def findLastBingo(calllist, cardlist):
+    if len(cardlist) == 1:
+        print('The last winning card!')
+        runBingo(calllist, cardlist)
+    else:
+        winner = runBingo(calllist, cardlist)
+        remainingcards = cardlist[:]
+        del remainingcards[winner]
+        findLastBingo(calllist, remainingcards)
 
 
 
@@ -123,6 +132,6 @@ cardfile = "Day4-Cards.txt"
 calllist = loadcalls(callfile)
 cardlist = loadcards(cardfile)
 
-print(cardlist)
-
 runBingo(calllist, cardlist)
+
+findLastBingo(calllist, cardlist)
